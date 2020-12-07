@@ -4,4 +4,6 @@ postgres==3.0.0
 psycopg2-binary==2.8.6
 psycopg2-pool==1.1
 pytz==2020.4
+six==1.15.0
 sqlparse==0.4.1
+validate-email==1.3
