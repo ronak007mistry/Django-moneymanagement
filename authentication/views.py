@@ -104,7 +104,7 @@ class RegistrationView(View):
                     [email],
                 )
                 EmailThread(email).start()
-                messages.success(request, 'Account successfully created')
+                messages.success(request, 'Account successfully created, Please check your email to activate it.')
                 return render(request, 'authentication/register.html')
 
         return render(request, 'authentication/register.html')

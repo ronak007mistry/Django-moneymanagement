@@ -9,6 +9,7 @@ import json
 from django.http import JsonResponse
 from userpreferences.models import UserPreference
 import datetime
+from django.shortcuts import get_object_or_404
 
 
 def search_expenses(request):
@@ -30,7 +31,12 @@ def index(request):
     paginator = Paginator(expenses, 5)
     page_number = request.GET.get('page')
     page_obj = Paginator.get_page(paginator, page_number)
-    currency = UserPreference.objects.get(user=request.user).currency
+    try:
+        currency = UserPreference.objects.get(user=request.user).currency
+    except:
+        currency = None
+
+    # currency = get_object_or_404(UserPreference, user=request.user).currency
     context = {
         'expenses': expenses,
         'page_obj': page_obj,
