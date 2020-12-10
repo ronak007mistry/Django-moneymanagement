@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PDF Output</title>
+    <style type="text/css">
+        @page {
+            size: {{ pagesize }};
+            margin: 1cm;
+        }
+    </style>
+</head>
+<body>
+
+
+    <h2>Expenses Summary</h2>
+    <table class="table">
+        <thead class="thead">
+            <tr>
+                <th>No.</th>
+                <th>Amount</th>
+                <th>Category</th>
+                <th>Description</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for expense in expenses %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{expense.amount}}</td>
+                    <td>{{expense.category}}</td>
+                    <td>{{expense.description}}</td>
+                    <td>{{expense.date}}</td>
+                </tr>
+            {% endfor%}
+
+            <tr>
+                <td>Total</td>
+                <td>{{total}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+</body>
+</html>

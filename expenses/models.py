@@ -13,10 +13,10 @@ class Expense(models.Model):
     category = models.CharField(max_length=266)
 
     def __str__(self):
-        return self.category
+        return str(self.category)
 
-    class Meta:
-        ordering: ['-date']
+    # class Meta:
+    #     ordering: ['-date']
 
 
 class Category(models.Model):

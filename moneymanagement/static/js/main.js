@@ -1,1 +1,1 @@
-conslole.log("He;;odfdfdkfhdkf")
+console.log("He;;odfdfdkfhdkf")

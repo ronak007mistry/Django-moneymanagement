@@ -1,13 +1,24 @@
-//const graph = ["bar", "line", "radar", "pie", "doughnut"];
+var ctx = document.getElementById("myChart").getContext("2d");
 
 
-//var i;
+const getRandomType = () => {
+  const types = [
+    "bar",
+    "horizontalBar",
+    "pie",
+    "line",
+    "radar",
+    "doughnut",
+    "polarArea",
+    ];
+  return types[Math.floor(Math.random() * types.length)];
+};
 
-//for (i = 0; i < graph.length; i++) {
 const renderChart = (data, labels) => {
-  var ctx = document.getElementById("myChart").getContext("2d");
-  var myChart = new Chart(ctx, {
-    type: "pie",
+
+    const type = getRandomType();
+    var myChart = new Chart(ctx, {
+    type: type,
     data: {
       labels: labels,
       datasets: [
@@ -37,12 +48,18 @@ const renderChart = (data, labels) => {
     options: {
       title: {
         display: true,
-        text: "Expenses per category",
+        text: "Expenses distribution per category",
+      },
+      legend: {
+        display: true,
+        position: "right",
+        labels: {
+          fontColor: "#000",
+        },
       },
     },
   });
 };
-//graph[i+1];
 
 
 const getChartData = () => {
@@ -60,10 +77,6 @@ const getChartData = () => {
       renderChart(data, labels);
     });
 };
-//if (i===4) {
-//    i = 0;
-//}
-//}
 
 document.onload = getChartData();
 
